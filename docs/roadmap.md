@@ -70,9 +70,9 @@ OpenAI/GPT допускается для существенного объёма
 ### 3. Публикация и обнаружение поисковиками
 
 - [x] После принятия удалить draft `noindex`; выполнить release-проверку.
-- [ ] Подтвердить публикацию, включить GitHub Actions в Settings → Pages;
+- [x] Подтвердить публикацию, включить GitHub Actions в Settings → Pages;
   выполнить workflow с `deploy=true` из `main`.
-- [ ] Проверить живые URL обеих локалей, HTTPS, изображения и sitemap.
+- [x] Проверить живые URL обеих локалей, HTTPS, изображения и sitemap.
 - [ ] Добавить живую ссылку в README и Website/About репозитория.
 - [ ] Подтвердить права в Google Search Console и Яндекс Вебмастере;
   отправить sitemap и проверить доступность обеих страниц.
@@ -114,3 +114,10 @@ Baseline, task и отчёт локальной проверки:
 с обеих страниц, локальная release-проверка с checkout приложения пройдена.
 Публикация запускается вручную через Actions; отчёт и результат проверки живых
 URL: `.work/ai/2026-10-20-publish/verification.md`.
+
+Сайт опубликован: [EN](https://ttsbard.github.io/),
+[RU](https://ttsbard.github.io/ru/).
+[Release-проверка и deploy](https://github.com/ttsbard/ttsbard.github.io/actions/runs/39467851988)
+успешны. Обе страницы, sitemap, CSS, favicon и четыре изображения отвечают
+HTTP 200 по HTTPS и совпадают с исходниками публикации; `noindex` отсутствует.
+Индексация поисковиками пока не проверялась.
