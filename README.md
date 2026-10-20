@@ -22,8 +22,7 @@ node scripts/check-site.mjs
 
 ## Publish
 
-The site is currently a draft. After content and design approval, remove
-`noindex` from both pages and run:
+Before publishing changes, run:
 
 ```sh
 node scripts/check-site.mjs --release
