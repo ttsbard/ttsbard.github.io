@@ -1,0 +1,58 @@
+name: Landing / GitHub Pages
+
+on:
+  pull_request:
+    branches: [main]
+    paths: ['site/**', 'scripts/check-site.mjs', '.github/workflows/pages.yml']
+  push:
+    branches: [main]
+    paths: ['site/**', 'scripts/check-site.mjs', '.github/workflows/pages.yml']
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: 'Publish the accepted landing (requires release validation)'
+        type: boolean
+        required: true
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: landing-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate bilingual static pages
+        run: node scripts/check-site.mjs
+      - name: Require launch-ready content before publishing
+        if: github.event_name == 'workflow_dispatch' && inputs.deploy
+        run: node scripts/check-site.mjs --release
+
+  deploy:
+    if: github.event_name == 'workflow_dispatch' && inputs.deploy && github.ref == 'refs/heads/main'
+    needs: validate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+      - name: Deploy landing
+        id: deployment
+        uses: actions/deploy-pages@v4
