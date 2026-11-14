@@ -14,6 +14,16 @@ python -m http.server 4173 --bind 127.0.0.1 --directory site
 
 Open [English](http://127.0.0.1:4173/) or [Russian](http://127.0.0.1:4173/ru/).
 
+### Windows (WSL)
+
+On Windows the preview server runs from WSL (Ubuntu), port 4187:
+
+```sh
+wsl -e sh -c 'cd /mnt/d/RustProjects/ttsbard.github.io && python3 -m http.server 4187 --bind 127.0.0.1 --directory site'
+```
+
+Open [English](http://127.0.0.1:4187/) or [Russian](http://127.0.0.1:4187/ru/).
+
 ## Validate
 
 ```sh
