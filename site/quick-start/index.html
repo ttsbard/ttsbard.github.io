@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TTSBard Quick Start</title>
+  <meta name="description" content="Install TTSBard for Windows, test your audio device, choose a voice and speak your first phrase.">
+  <link rel="canonical" href="https://ttsbard.github.io/quick-start/">
+  <link rel="alternate" hreflang="en" href="https://ttsbard.github.io/quick-start/">
+  <link rel="alternate" hreflang="ru" href="https://ttsbard.github.io/ru/quick-start/">
+  <link rel="alternate" hreflang="x-default" href="https://ttsbard.github.io/quick-start/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="TTSBard">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="TTSBard Quick Start">
+  <meta property="og:description" content="Install TTSBard for Windows, test your audio device, choose a voice and speak your first phrase.">
+  <meta property="og:url" content="https://ttsbard.github.io/quick-start/">
+  <meta name="theme-color" content="#315778">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="stylesheet" href="../assets/styles.css?v=3">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="wrap header-inner">
+    <a class="brand" href="../" aria-label="TTSBard home"><img src="../assets/favicon.png" width="36" height="36" alt="">TTSBard</a>
+    <nav aria-label="Main navigation">
+      <a href="../">Back to home</a>
+      <a class="language-link" href="../ru/quick-start/" lang="ru" hreflang="ru">Русский</a>
+    </nav>
+  </div></header>
+  <main id="main">
+    <div class="hero"><div class="wrap faq">
+      <h1>TTSBard Quick Start</h1>
+      <p class="lead">Install TTSBard for Windows, test your audio device, choose a voice and speak your first phrase.</p>
+    </div></div>
+
+    <div class="wrap faq">
+      <section class="section section-copy" aria-labelledby="install">
+        <h2 id="install">1. Install TTSBard</h2>
+        <p>Open the latest release, download the Windows x64 installer from <strong>Assets</strong> (the file ending in <code>_x64-setup.exe</code>), run it, and open TTSBard.</p>
+        <div class="actions"><a class="button primary" href="https://github.com/ttsbard/TTSBard/releases/latest">Download for Windows</a></div>
+      </section>
+      <section class="section section-copy" aria-labelledby="audio">
+        <h2 id="audio">2. Choose and test your audio output</h2>
+        <p>Open <strong>Audio → Devices</strong>. Turn on <strong>Speaker</strong>, select your headphones or speakers by name, and click ▶ <strong>Test playback</strong>. Check that the sound comes through the intended output.</p>
+        <p>Selecting a device by name keeps speech on that output and lets TTSBard reuse the stream between phrases. With <strong>(default)</strong>, TTSBard checks the Windows output and opens a new stream for each phrase. A fixed output also helps when you want to keep speech separate from 5.1 or 7.1 game audio.</p>
+        <details>
+          <summary>Send speech to Discord, OBS or a game</summary>
+          <p>If you don’t have a virtual cable, download <a href="https://vb-audio.com/Cable/">VB-CABLE from VB-Audio</a>, extract the archive, run the installer as administrator, and restart Windows.</p>
+          <p>Under <strong>Audio → Devices → Virtual microphone</strong>, enable the output and select <strong>CABLE Input</strong>. In the receiving app, choose <strong>CABLE Output</strong> as its microphone. Click ▶ next to the virtual microphone in TTSBard and check that the receiving app’s meter responds.</p>
+        </details>
+      </section>
+      <section class="section section-copy" aria-labelledby="voice">
+        <h2 id="voice">3. Set up a voice</h2>
+        <ul>
+          <li><strong>Silero via Telegram.</strong> Open <strong>TTS → Silero</strong>, sign in to Telegram, choose a voice, and make Silero active. If the bot’s replies aren’t already in MP3, send <code>/mp3</code> in the Telegram chat with <strong>@silero_voice_bot</strong>.</li>
+          <li><strong>Local Pocket TTS.</strong> Open <strong>Settings → Models</strong>. If the list is empty, click <strong>Download catalog from repository</strong>. Download a Pocket TTS package and return to <strong>TTS</strong>. Select the model and choose a ready voice or provide a WAV reference, depending on the model. Activate the model for speech.</li>
+        </ul>
+      </section>
+      <section class="section section-copy" aria-labelledby="phrase">
+        <h2 id="phrase">4. Speak your first phrase</h2>
+        <p>Open <strong>Text</strong>, select <strong>Voice only</strong>, type “Voice test” and press <strong>Speak</strong> or <kbd>Enter</kbd>. Check that you hear it on the intended output. From another app, press <kbd>Ctrl+Shift+F3</kbd> to bring back the editor.</p>
+      </section>
+      <section class="section section-copy" aria-labelledby="next">
+        <h2 id="next">More ways to use TTSBard</h2>
+        <ul>
+          <li><strong>OCR.</strong> Download a model in <strong>Settings → Models</strong>, then enable OCR in its panel to capture text from the screen.</li>
+          <li><strong>Hotkeys.</strong> Change shortcuts in <strong>Hotkeys</strong> or assign an action to a single key in <strong>Key interception</strong>.</li>
+          <li><strong>Compact and Mono.</strong> Press <kbd>Ctrl+M</kbd> for a smaller window. Use the editor’s <strong>…</strong> menu and choose <strong>Switch to Mono mode</strong> to keep only the text field.</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+  <footer><div class="wrap footer-inner"><span>TTSBard · Windows 10/11</span>
+    <a href="https://github.com/ttsbard/TTSBard/blob/master/docs/en/user/README.md">Full documentation</a>
+  </div></footer>
+</body>
+</html>

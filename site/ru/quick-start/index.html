@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Первый запуск TTSBard</title>
+  <meta name="description" content="Установите TTSBard для Windows, проверьте аудиоустройство, настройте голос и озвучьте первую фразу.">
+  <link rel="canonical" href="https://ttsbard.github.io/ru/quick-start/">
+  <link rel="alternate" hreflang="en" href="https://ttsbard.github.io/quick-start/">
+  <link rel="alternate" hreflang="ru" href="https://ttsbard.github.io/ru/quick-start/">
+  <link rel="alternate" hreflang="x-default" href="https://ttsbard.github.io/quick-start/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="TTSBard">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="Первый запуск TTSBard">
+  <meta property="og:description" content="Установите TTSBard для Windows, проверьте аудиоустройство, настройте голос и озвучьте первую фразу.">
+  <meta property="og:url" content="https://ttsbard.github.io/ru/quick-start/">
+  <meta name="theme-color" content="#315778">
+  <link rel="icon" type="image/png" href="../../assets/favicon.png">
+  <link rel="stylesheet" href="../../assets/styles.css?v=3">
+</head>
+<body>
+  <a class="skip-link" href="#main">К содержанию</a>
+  <header class="site-header"><div class="wrap header-inner">
+    <a class="brand" href="../" aria-label="Главная страница TTSBard"><img src="../../assets/favicon.png" width="36" height="36" alt="">TTSBard</a>
+    <nav aria-label="Основная навигация">
+      <a href="../">На главную</a>
+      <a class="language-link" href="../../quick-start/" lang="en" hreflang="en">English</a>
+    </nav>
+  </div></header>
+  <main id="main">
+    <div class="hero"><div class="wrap faq">
+      <h1>Первый запуск TTSBard</h1>
+      <p class="lead">Установите TTSBard для Windows, проверьте аудиоустройство, настройте голос и озвучьте первую фразу.</p>
+    </div></div>
+
+    <div class="wrap faq">
+      <section class="section section-copy" aria-labelledby="install">
+        <h2 id="install">1. Установите TTSBard</h2>
+        <p>Откройте последний релиз, скачайте в разделе <strong>Assets</strong> установщик для Windows x64 (файл с окончанием <code>_x64-setup.exe</code>), запустите его и откройте TTSBard.</p>
+        <div class="actions"><a class="button primary" href="https://github.com/ttsbard/TTSBard/releases/latest">Скачать для Windows</a></div>
+      </section>
+      <section class="section section-copy" aria-labelledby="audio">
+        <h2 id="audio">2. Выберите и проверьте аудиовыход</h2>
+        <p>Откройте <strong>Аудио → Устройства</strong>. Включите выход <strong>Динамик</strong>, выберите наушники или колонки по имени и нажмите ▶ <strong>Тест воспроизведения</strong>. Убедитесь, что слышите сигнал на нужном выходе.</p>
+        <p>Выбор по имени закрепляет выход и позволяет TTSBard переиспользовать поток между фразами. С вариантом <strong>«(по умолчанию)»</strong> TTSBard заново определяет выход Windows и открывает поток для каждой фразы. Явный выбор также пригодится, если вы хотите вывести озвучку отдельно от многоканального звука игры, например 5.1 или 7.1.</p>
+        <details>
+          <summary>Передача речи в Discord, OBS или игру</summary>
+          <p>Если виртуального кабеля ещё нет, скачайте <a href="https://vb-audio.com/Cable/">VB-CABLE с сайта VB-Audio</a>, распакуйте архив, запустите установщик от имени администратора и перезагрузите Windows.</p>
+          <p>В <strong>Аудио → Устройства → Виртуальный микрофон</strong> включите выход и выберите <strong>CABLE Input</strong>. В принимающей программе выберите <strong>CABLE Output</strong> как микрофон. Нажмите ▶ рядом с виртуальным микрофоном в TTSBard и убедитесь, что индикатор в принимающей программе реагирует.</p>
+        </details>
+      </section>
+      <section class="section section-copy" aria-labelledby="voice">
+        <h2 id="voice">3. Настройте голос</h2>
+        <ul>
+          <li><strong>Silero через Telegram.</strong> Откройте <strong>TTS → Silero</strong>, авторизуйтесь в Telegram, выберите голос и сделайте Silero активным. Если бот отвечает в другом формате, отправьте <code>/mp3</code> в Telegram-чате с <strong>@silero_voice_bot</strong>.</li>
+          <li><strong>Локальная модель Pocket TTS.</strong> Откройте <strong>Настройки → Модели</strong>. Если список пуст, нажмите <strong>«Загрузить каталог из репозитория»</strong>. Скачайте пакет Pocket TTS и вернитесь в <strong>TTS</strong>. Выберите модель и, в зависимости от неё, готовый голос или образец WAV. Включите модель для озвучивания.</li>
+        </ul>
+      </section>
+      <section class="section section-copy" aria-labelledby="phrase">
+        <h2 id="phrase">4. Озвучьте первую фразу</h2>
+        <p>Откройте <strong>Текст</strong>, выберите маршрут <strong>«Только голос»</strong>, введите «Проверка голоса» и нажмите <strong>«Озвучить»</strong> или <kbd>Enter</kbd>. Убедитесь, что фраза слышна там, где нужно. Чтобы снова открыть редактор из другого приложения, нажмите <kbd>Ctrl+Shift+F3</kbd>.</p>
+      </section>
+      <section class="section section-copy" aria-labelledby="next">
+        <h2 id="next">Что попробовать дальше</h2>
+        <ul>
+          <li><strong>OCR.</strong> Скачайте модель в <strong>Настройки → Модели</strong> и включите OCR в его панели, чтобы захватывать текст с экрана.</li>
+          <li><strong>Горячие клавиши.</strong> Настройте сочетания в одноимённой панели или назначьте действие на одну клавишу в <strong>Перехвате клавиш</strong>.</li>
+          <li><strong>Компактный режим и «Моно».</strong> Нажмите <kbd>Ctrl+M</kbd>, чтобы уменьшить окно. В меню <strong>«…»</strong> редактора выберите <strong>«Перейти в моно»</strong>, чтобы оставить только поле ввода.</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+  <footer><div class="wrap footer-inner"><span>TTSBard · Windows 10/11</span>
+    <a href="https://github.com/ttsbard/TTSBard/blob/master/docs/ru/user/README.md">Полная документация</a>
+  </div></footer>
+</body>
+</html>

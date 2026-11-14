@@ -1,4 +1,4 @@
-// Dependency-free checks for the two static Pages documents. Does not fetch URLs.
+// Dependency-free checks for the static Pages documents. Does not fetch URLs.
 import { existsSync, readFileSync, statSync } from 'node:fs';
 import { dirname, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -16,20 +16,25 @@ const appRoot = appRootArg === -1 ? null : resolve(process.argv[appRootArg + 1])
 if (appRoot && !existsSync(resolve(appRoot, 'docs/en/user/guide.md'))) {
   throw new Error('--app-root must point to the TTSBard application checkout');
 }
-const locales = { en: 'index.html', ru: 'ru/index.html' };
+const localeRoots = { en: '', ru: 'ru/' };
+const pages = ['', 'quick-start/'].flatMap(route =>
+  Object.entries(localeRoots).map(([lang, prefix]) => ({ lang, route, pathname: prefix + route }))
+);
 const shots = ['editor', 'compact', 'mono'];
-const sections = ['features', 'voices', 'streaming', 'soundpad', 'sources', 'start', 'faq'];
+const landingSections = ['features', 'voices', 'streaming', 'soundpad', 'sources', 'start', 'faq'];
+const guideSections = ['install', 'audio', 'voice', 'phrase', 'next'];
 const fail = (file, message) => errors.push(`${file}: ${message}`);
 const attr = (tag, name) => tag.match(new RegExp(`(?:^|\\s)${name}\\s*=\\s*(["'])(.*?)\\1`, 'i'))?.[2];
 const tags = (html, name) => [...html.matchAll(new RegExp(`<${name}\\b[^>]*>`, 'gi'))].map(m => m[0]);
 const content = file => readFileSync(file, 'utf8').replace(/<!--[\s\S]*?-->/g, '');
 const metadata = (html, key) => tags(html, 'meta').find(t => attr(t, 'name') === key || attr(t, 'property') === key);
 
-for (const [lang, file] of Object.entries(locales)) {
+for (const { lang, route, pathname } of pages) {
+  const file = pathname + 'index.html';
   const path = resolve(site, file);
   if (!existsSync(path)) { fail(file, 'page missing'); continue; }
   const html = content(path);
-  const pageUrl = base + (lang === 'en' ? '' : 'ru/');
+  const pageUrl = base + pathname;
   if (attr(tags(html, 'html')[0] ?? '', 'lang') !== lang) fail(file, 'incorrect document language');
   if ((html.match(/<h1\b/gi) ?? []).length !== 1) fail(file, 'expected one h1');
   if (!/<title>[^<]+<\/title>/i.test(html)) fail(file, 'title missing');
@@ -41,13 +46,13 @@ for (const [lang, file] of Object.entries(locales)) {
   const links = tags(html, 'link');
   const canonical = links.filter(t => attr(t, 'rel') === 'canonical');
   if (canonical.length !== 1 || attr(canonical[0], 'href') !== pageUrl) fail(file, 'incorrect canonical');
-  for (const [locale, suffix] of [['en', ''], ['ru', 'ru/'], ['x-default', '']]) {
+  for (const [locale, prefix] of [...Object.entries(localeRoots), ['x-default', '']]) {
     const alts = links.filter(t => attr(t, 'rel') === 'alternate' && attr(t, 'hreflang') === locale);
-    if (alts.length !== 1 || attr(alts[0], 'href') !== base + suffix) fail(file, `incorrect ${locale} alternate`);
+    if (alts.length !== 1 || attr(alts[0], 'href') !== base + prefix + route) fail(file, `incorrect ${locale} alternate`);
   }
   const ids = [...html.matchAll(/\bid\s*=\s*(["'])(.*?)\1/gi)].map(m => m[2]);
   if (new Set(ids).size !== ids.length) fail(file, 'duplicate element IDs');
-  for (const id of ['main', ...sections]) if (!ids.includes(id)) fail(file, `section #${id} missing`);
+  for (const id of ['main', ...(route ? guideSections : landingSections)]) if (!ids.includes(id)) fail(file, `section #${id} missing`);
   for (const tag of [...tags(html, 'a'), ...links, ...tags(html, 'img'), ...tags(html, 'script')]) {
     const url = attr(tag, 'href') ?? attr(tag, 'src');
     if (url === undefined) continue;
@@ -59,7 +64,7 @@ for (const [lang, file] of Object.entries(locales)) {
     }
     if (/^(mailto:|tel:)/.test(url)) continue;
     if (/^(?:[a-z][\w+.-]*:|\/\/)/i.test(url)) { fail(file, `unsupported URL: ${url}`); continue; }
-    const parsed = new URL(url, base + (lang === 'en' ? '' : 'ru/'));
+    const parsed = new URL(url, pageUrl);
     let target = resolve(site, decodeURIComponent(parsed.pathname.slice(1)));
     const rel = relative(site, target);
     if (rel === '..' || rel.startsWith(`..${sep}`)) { fail(file, `URL escapes site: ${url}`); continue; }
@@ -76,7 +81,7 @@ for (const [lang, file] of Object.entries(locales)) {
     if (attr(image, 'alt') === undefined) fail(file, 'image alt missing');
     if (!/^\d+$/.test(attr(image, 'width') ?? '') || !/^\d+$/.test(attr(image, 'height') ?? '')) fail(file, 'image dimensions missing');
   }
-  for (const role of shots) {
+  for (const role of route ? [] : shots) {
     const placeholders = [...html.matchAll(/\bdata-screenshot-slot\s*=\s*(["'])(.*?)\1/gi)].filter(m => m[2] === role);
     const real = images.filter(t => attr(t, 'data-product-shot') === role);
     if (placeholders.length + real.length !== 1) fail(file, `expected one screenshot role: ${role}`);
@@ -95,7 +100,7 @@ const sitemap = resolve(site, 'sitemap.xml');
 if (!existsSync(sitemap)) fail('sitemap.xml', 'missing');
 else {
   const urls = [...readFileSync(sitemap, 'utf8').matchAll(/<loc>(.*?)<\/loc>/g)].map(m => m[1]);
-  if (urls.length !== 2 || ![base, base + 'ru/'].every(url => urls.includes(url))) fail('sitemap.xml', 'expected exactly the two canonical URLs');
+  if (urls.length !== pages.length || !pages.every(({ pathname }) => urls.includes(base + pathname))) fail('sitemap.xml', 'expected exactly the canonical page URLs');
 }
 if (!existsSync(resolve(site, '.nojekyll'))) fail('.nojekyll', 'missing');
 if (errors.length) {
