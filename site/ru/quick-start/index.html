@@ -17,7 +17,7 @@
   <meta property="og:url" content="https://ttsbard.github.io/ru/quick-start/">
   <meta name="theme-color" content="#315778">
   <link rel="icon" type="image/png" href="../../assets/favicon.png">
-  <link rel="stylesheet" href="../../assets/styles.css?v=3">
+  <link rel="stylesheet" href="../../assets/styles.css?v=13">
 </head>
 <body>
   <a class="skip-link" href="#main">К содержанию</a>
@@ -52,10 +52,12 @@
       </section>
       <section class="section section-copy" aria-labelledby="voice">
         <h2 id="voice">3. Настройте голос</h2>
+        <p>В панели <strong>TTS</strong> выберите подходящий провайдер. Доступны локальные Piper и Pocket TTS, Silero через Telegram, OpenAI, ElevenLabs, Fish Audio и совместимые локальные HTTP-серверы. Ниже два примера настройки.</p>
         <ul>
           <li><strong>Silero через Telegram.</strong> Откройте <strong>TTS → Silero</strong>, авторизуйтесь в Telegram, выберите голос и сделайте Silero активным. Если бот отвечает в другом формате, отправьте <code>/mp3</code> в Telegram-чате с <strong>@silero_voice_bot</strong>.</li>
           <li><strong>Локальная модель Pocket TTS.</strong> Откройте <strong>Настройки → Модели</strong>. Если список пуст, нажмите <strong>«Загрузить каталог из репозитория»</strong>. Скачайте пакет Pocket TTS и вернитесь в <strong>TTS</strong>. Выберите модель и, в зависимости от неё, готовый голос или образец WAV. Включите модель для озвучивания.</li>
         </ul>
+        <p><a href="https://github.com/ttsbard/TTSBard/blob/master/docs/ru/user/tts.md">Инструкции для остальных провайдеров</a></p>
       </section>
       <section class="section section-copy" aria-labelledby="phrase">
         <h2 id="phrase">4. Озвучьте первую фразу</h2>
@@ -67,6 +69,7 @@
           <li><strong>OCR.</strong> Скачайте модель в <strong>Настройки → Модели</strong> и включите OCR в его панели, чтобы захватывать текст с экрана.</li>
           <li><strong>Горячие клавиши.</strong> Настройте сочетания в одноимённой панели или назначьте действие на одну клавишу в <strong>Перехвате клавиш</strong>.</li>
           <li><strong>Компактный режим и «Моно».</strong> Нажмите <kbd>Ctrl+M</kbd>, чтобы уменьшить окно. В меню <strong>«…»</strong> редактора выберите <strong>«Перейти в моно»</strong>, чтобы оставить только поле ввода.</li>
+          <li><strong>Интеграции.</strong> Показывайте реплики в OBS, отправляйте их в чат Twitch или чатбокс VRChat. <a href="https://github.com/ttsbard/TTSBard/blob/master/docs/ru/integrations/README.md">Настройка интеграций</a>.</li>
         </ul>
       </section>
     </div>

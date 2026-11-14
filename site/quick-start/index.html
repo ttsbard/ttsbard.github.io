@@ -17,7 +17,7 @@
   <meta property="og:url" content="https://ttsbard.github.io/quick-start/">
   <meta name="theme-color" content="#315778">
   <link rel="icon" type="image/png" href="../assets/favicon.png">
-  <link rel="stylesheet" href="../assets/styles.css?v=3">
+  <link rel="stylesheet" href="../assets/styles.css?v=13">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -52,10 +52,12 @@
       </section>
       <section class="section section-copy" aria-labelledby="voice">
         <h2 id="voice">3. Set up a voice</h2>
+        <p>In <strong>TTS</strong>, choose the provider you want to use. TTSBard supports local voices through Piper and Pocket TTS, Silero via Telegram, OpenAI, ElevenLabs, Fish Audio, and compatible local HTTP servers. Here’s how to set up Silero and Pocket TTS.</p>
         <ul>
           <li><strong>Silero via Telegram.</strong> Open <strong>TTS → Silero</strong>, sign in to Telegram, choose a voice, and make Silero active. If the bot’s replies aren’t already in MP3, send <code>/mp3</code> in the Telegram chat with <strong>@silero_voice_bot</strong>.</li>
           <li><strong>Local Pocket TTS.</strong> Open <strong>Settings → Models</strong>. If the list is empty, click <strong>Download catalog from repository</strong>. Download a Pocket TTS package and return to <strong>TTS</strong>. Select the model and choose a ready voice or provide a WAV reference, depending on the model. Activate the model for speech.</li>
         </ul>
+        <p><a href="https://github.com/ttsbard/TTSBard/blob/master/docs/en/user/tts.md">Setup guides for the other providers</a></p>
       </section>
       <section class="section section-copy" aria-labelledby="phrase">
         <h2 id="phrase">4. Speak your first phrase</h2>
@@ -67,6 +69,7 @@
           <li><strong>OCR.</strong> Download a model in <strong>Settings → Models</strong>, then enable OCR in its panel to capture text from the screen.</li>
           <li><strong>Hotkeys.</strong> Change shortcuts in <strong>Hotkeys</strong> or assign an action to a single key in <strong>Key interception</strong>.</li>
           <li><strong>Compact and Mono.</strong> Press <kbd>Ctrl+M</kbd> for a smaller window. Use the editor’s <strong>…</strong> menu and choose <strong>Switch to Mono mode</strong> to keep only the text field.</li>
+          <li><strong>Integrations.</strong> Display phrases in OBS or send them to Twitch chat or the VRChat chatbox. <a href="https://github.com/ttsbard/TTSBard/blob/master/docs/en/integrations/README.md">Set up integrations</a>.</li>
         </ul>
       </section>
     </div>
