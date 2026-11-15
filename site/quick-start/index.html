@@ -17,7 +17,7 @@
   <meta property="og:url" content="https://ttsbard.github.io/quick-start/">
   <meta name="theme-color" content="#315778">
   <link rel="icon" type="image/png" href="../assets/favicon.png">
-  <link rel="stylesheet" href="../assets/styles.css?v=13">
+  <link rel="stylesheet" href="../assets/styles.css?v=15">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -52,16 +52,25 @@
       </section>
       <section class="section section-copy" aria-labelledby="voice">
         <h2 id="voice">3. Set up a voice</h2>
-        <p>In <strong>TTS</strong>, choose the provider you want to use. TTSBard supports local voices through Piper and Pocket TTS, Silero via Telegram, OpenAI, ElevenLabs, Fish Audio, and compatible local HTTP servers. Here’s how to set up Silero and Pocket TTS.</p>
-        <ul>
-          <li><strong>Silero via Telegram.</strong> Open <strong>TTS → Silero</strong>, sign in to Telegram, choose a voice, and make Silero active. If the bot’s replies aren’t already in MP3, send <code>/mp3</code> in the Telegram chat with <strong>@silero_voice_bot</strong>.</li>
-          <li><strong>Local Pocket TTS.</strong> Open <strong>Settings → Models</strong>. If the list is empty, click <strong>Download catalog from repository</strong>. Download a Pocket TTS package and return to <strong>TTS</strong>. Select the model and choose a ready voice or provide a WAV reference, depending on the model. Activate the model for speech.</li>
-        </ul>
+        <p>Choose a voice in <strong>TTS</strong>. For local voice cloning, set up Pocket TTS. To use a ready-made voice through Telegram, set up Silero.</p>
+        <section class="voice-option" aria-labelledby="pocket-tts">
+          <h3 id="pocket-tts">Clone a voice with Pocket TTS</h3>
+          <ol>
+            <li>Open <strong>Settings → Models</strong>. If the list is empty, click <strong>Download catalog from repository</strong>. Download <strong>Shtorm RU v2 Fast</strong> for Russian (about 600 MB) or <strong>Kyutai English</strong> for English (about 380 MB). Each model speaks only its own language.</li>
+            <li>Open <strong>TTS → Pocket TTS</strong> and select the downloaded model. Choose a clean <strong>WAV</strong> recording of one speaker saying a complete phrase, ideally 5–8 seconds long and at most 12 seconds. Listen to it, then click <strong>Normalize</strong>.</li>
+            <li>Make the model active and <a href="#phrase">speak a short phrase</a> in its language. On longer phrases, the model can start to stumble.</li>
+          </ol>
+          <p>For Russian, install RUAccent in <strong>Settings → Models</strong> and turn on <strong>Place stresses automatically</strong>. <a href="https://github.com/ttsbard/TTSBard/blob/master/docs/en/user/tts.md#pocket-tts">More about preparing your WAV recording</a>.</p>
+        </section>
+        <section class="voice-option" aria-labelledby="silero">
+          <h3 id="silero">Use a Silero voice via Telegram</h3>
+          <p>Open <strong>TTS → Silero</strong>, sign in to Telegram, choose a voice, and make Silero active. If the bot’s replies aren’t already in MP3, send <code>/mp3</code> in the Telegram chat with <strong>@silero_voice_bot</strong>.</p>
+        </section>
         <p><a href="https://github.com/ttsbard/TTSBard/blob/master/docs/en/user/tts.md">Setup guides for the other providers</a></p>
       </section>
       <section class="section section-copy" aria-labelledby="phrase">
         <h2 id="phrase">4. Speak your first phrase</h2>
-        <p>Open <strong>Text</strong>, select <strong>Voice only</strong>, type “Voice test” and press <strong>Speak</strong> or <kbd>Enter</kbd>. Check that you hear it on the intended output. From another app, press <kbd>Ctrl+Shift+F3</kbd> to bring back the editor.</p>
+        <p>Open <strong>Text</strong>, select <strong>Voice only</strong>, type a short phrase in your selected voice’s language, such as “Voice test” or <span lang="ru">“Проверка голоса”</span>, and press <strong>Speak</strong> or <kbd>Enter</kbd>. Check that you hear it on the intended output. From another app, press <kbd>Ctrl+Shift+F3</kbd> to bring back the editor.</p>
       </section>
       <section class="section section-copy" aria-labelledby="next">
         <h2 id="next">More ways to use TTSBard</h2>

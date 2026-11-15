@@ -17,7 +17,7 @@
   <meta property="og:url" content="https://ttsbard.github.io/ru/quick-start/">
   <meta name="theme-color" content="#315778">
   <link rel="icon" type="image/png" href="../../assets/favicon.png">
-  <link rel="stylesheet" href="../../assets/styles.css?v=13">
+  <link rel="stylesheet" href="../../assets/styles.css?v=15">
 </head>
 <body>
   <a class="skip-link" href="#main">К содержанию</a>
@@ -52,16 +52,25 @@
       </section>
       <section class="section section-copy" aria-labelledby="voice">
         <h2 id="voice">3. Настройте голос</h2>
-        <p>В панели <strong>TTS</strong> выберите подходящий провайдер. Доступны локальные Piper и Pocket TTS, Silero через Telegram, OpenAI, ElevenLabs, Fish Audio и совместимые локальные HTTP-серверы. Ниже два примера настройки.</p>
-        <ul>
-          <li><strong>Silero через Telegram.</strong> Откройте <strong>TTS → Silero</strong>, авторизуйтесь в Telegram, выберите голос и сделайте Silero активным. Если бот отвечает в другом формате, отправьте <code>/mp3</code> в Telegram-чате с <strong>@silero_voice_bot</strong>.</li>
-          <li><strong>Локальная модель Pocket TTS.</strong> Откройте <strong>Настройки → Модели</strong>. Если список пуст, нажмите <strong>«Загрузить каталог из репозитория»</strong>. Скачайте пакет Pocket TTS и вернитесь в <strong>TTS</strong>. Выберите модель и, в зависимости от неё, готовый голос или образец WAV. Включите модель для озвучивания.</li>
-        </ul>
+        <p>Выберите голос в панели <strong>TTS</strong>. Pocket TTS позволяет клонировать голос локально, а Silero даёт доступ к готовым голосам через Telegram.</p>
+        <section class="voice-option" aria-labelledby="pocket-tts">
+          <h3 id="pocket-tts">Клонирование голоса с Pocket TTS</h3>
+          <ol>
+            <li>Откройте <strong>Настройки → Модели</strong>. Если список пуст, нажмите <strong>«Загрузить каталог из репозитория»</strong>. Скачайте <strong>Shtorm RU v2 Fast</strong> для русского (около 600 МБ) или <strong>Kyutai English</strong> для английского (около 380 МБ). Каждая модель озвучивает текст только на своём языке.</li>
+            <li>Откройте <strong>TTS → Pocket TTS</strong> и выберите скачанную модель. Укажите чистую запись одного голоса в <strong>WAV</strong>. Подойдёт законченная фраза на 5–8 секунд, максимальная длина записи — 12 секунд. Прослушайте запись и нажмите <strong>«Подготовить»</strong>.</li>
+            <li>Включите модель для озвучивания и <a href="#phrase">проверьте её на короткой реплике</a> на языке модели. На длинных фразах синтез может сбиваться.</li>
+          </ol>
+          <p>Для русского языка установите RUAccent в <strong>Настройки → Модели</strong> и включите <strong>«Автоматически расставлять ударения»</strong>. <a href="https://github.com/ttsbard/TTSBard/blob/master/docs/ru/user/tts.md#pocket-tts">Подробнее о подготовке WAV</a>.</p>
+        </section>
+        <section class="voice-option" aria-labelledby="silero">
+          <h3 id="silero">Готовый голос Silero через Telegram</h3>
+          <p>Откройте <strong>TTS → Silero</strong>, авторизуйтесь в Telegram, выберите голос и сделайте Silero активным. Если бот отвечает в другом формате, отправьте <code>/mp3</code> в Telegram-чате с <strong>@silero_voice_bot</strong>.</p>
+        </section>
         <p><a href="https://github.com/ttsbard/TTSBard/blob/master/docs/ru/user/tts.md">Инструкции для остальных провайдеров</a></p>
       </section>
       <section class="section section-copy" aria-labelledby="phrase">
         <h2 id="phrase">4. Озвучьте первую фразу</h2>
-        <p>Откройте <strong>Текст</strong>, выберите маршрут <strong>«Только голос»</strong>, введите «Проверка голоса» и нажмите <strong>«Озвучить»</strong> или <kbd>Enter</kbd>. Убедитесь, что фраза слышна там, где нужно. Чтобы снова открыть редактор из другого приложения, нажмите <kbd>Ctrl+Shift+F3</kbd>.</p>
+        <p>Откройте <strong>Текст</strong>, выберите маршрут <strong>«Только голос»</strong>, введите короткую фразу на языке выбранного голоса, например «Проверка голоса» или <span lang="en">«Voice test»</span>, и нажмите <strong>«Озвучить»</strong> или <kbd>Enter</kbd>. Убедитесь, что фраза слышна там, где нужно. Чтобы снова открыть редактор из другого приложения, нажмите <kbd>Ctrl+Shift+F3</kbd>.</p>
       </section>
       <section class="section section-copy" aria-labelledby="next">
         <h2 id="next">Что попробовать дальше</h2>
